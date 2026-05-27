@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BSC Sniper — PairCreated Lab</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div>
+      <h1>PairCreated Lab</h1>
+      <p class="subtitle">BSC testnet · create pairs · scan · history</p>
+    </div>
+    <div id="status-pill" class="pill pill-loading">Connecting…</div>
+  </header>
+
+  <main class="grid">
+    <section class="card">
+      <h2>Network status</h2>
+      <dl id="status-grid" class="kv-grid"></dl>
+      <button type="button" class="btn secondary" id="btn-refresh-status">Refresh status</button>
+    </section>
+
+    <section class="card">
+      <h2>Create pair (on-chain)</h2>
+      <p class="hint">
+        <code>createPair</code> deploys the pool contract (~2M gas). Use
+        <strong>Deploy new token + pair</strong> if the pair already exists.
+        Safety checks run on each target token (honeypot / contract code).
+      </p>
+      <form id="form-create-pair" class="form">
+        <label>
+          Token A
+          <input type="text" id="token-a" placeholder="0x…" />
+        </label>
+        <label>
+          Token B
+          <input type="text" id="token-b" placeholder="0x…" />
+        </label>
+        <div class="row">
+          <button type="button" class="btn ghost" id="btn-fill-wbnb">Fill WBNB + quote</button>
+          <button type="submit" class="btn primary">Create pair</button>
+          <button type="button" class="btn primary" id="btn-deploy-and-pair">
+            Deploy new token + pair
+          </button>
+        </div>
+      </form>
+      <pre id="create-result" class="result hidden"></pre>
+    </section>
+
+    <section class="card">
+      <h2>Test scan</h2>
+      <p class="hint">Fetch <code>PairCreated</code> logs from the factory for a block range.</p>
+      <form id="form-scan" class="form">
+        <label>
+          Lookback blocks
+          <input type="number" id="lookback" value="200" min="1" max="5000" />
+        </label>
+        <div class="row">
+          <button type="submit" class="btn primary">Scan range</button>
+          <button type="button" class="btn secondary" id="btn-live-scan">Live cycle (once)</button>
+        </div>
+      </form>
+      <pre id="scan-result" class="result hidden"></pre>
+    </section>
+
+    <section class="card card-wide">
+      <div class="card-head">
+        <h2>History</h2>
+        <div class="row">
+          <label class="checkbox">
+            <input type="checkbox" id="filter-snipeable" />
+            Snipeable only
+          </label>
+          <button type="button" class="btn ghost" id="btn-refresh-history">Refresh</button>
+          <button type="button" class="btn danger" id="btn-clear-history">Clear</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Source</th>
+              <th>Block</th>
+              <th>Pair</th>
+              <th>Token0 / Token1</th>
+              <th>Target</th>
+              <th>Safety</th>
+              <th>Tx</th>
+            </tr>
+          </thead>
+          <tbody id="history-body">
+            <tr><td colspan="8" class="empty">No records yet</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast hidden"></div>
+  <script src="/static/app.js"></script>
+</body>
+</html>

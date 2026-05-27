@@ -1,0 +1,35 @@
+{
+  "networkName": "bsc-testnet",
+  "chainId": 97,
+  "bscNode": "https://bsc-testnet.rpc.sentio.xyz",
+  "rpcUrl": "https://bsc-testnet-rpc.publicnode.com",
+  "rpcUrls": [
+    "https://bsc-testnet.rpc.sentio.xyz",
+    "https://bsc-testnet-rpc.publicnode.com",
+    "https://data-seed-prebsc-1-s1.bnbchain.org:8545"
+  ],
+  "factoryAddress": "0x6725F303b657a9451d8BA641348b6761A6CC7a17",
+  "routerAddress": "0xD99D1c33F9fC3444f8101754aBC46c52416550D1",
+  "wbnbAddress": "0xae13d989dac2f0debff460ac112a837c89baa7cd",
+  "quoteTokenAddresses": [
+    "0xae13d989dac2f0debff460ac112a837c89baa7cd"
+  ],
+  "walletPrivateKey": "YOUR_PRIVATE_KEY_FOR_TESTNET_ONLY",
+  "dryRun": true,
+  "disableSafetyForTesting": true,
+  "enableMiniAudit": true,
+  "checkHoneypot": true,
+  "checkSourceCode": false,
+  "safetyProbeBnb": 0.001,
+  "minSafetyScore": 50,
+  "amountToSpendPerSnipe": 0.01,
+  "slippagePercent": 5,
+  "gasLimit": 2500000,
+  "pollSeconds": 10,
+  "initialLookbackBlocks": 5,
+  "maxScanBlocks": 30,
+  "manualScanChunkBlocks": 200,
+  "overlapBlocks": 2,
+  "confirmationBlocks": 1,
+  "startBlock": null
+}
