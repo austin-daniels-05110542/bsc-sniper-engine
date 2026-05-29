@@ -1,6 +1,6 @@
 # Blocker Pack and Security Actions
 
-## Blocker Pack (for Client)
+## Blocker Pack
 
 ### 1. Exact Endpoints Called
 - **BscScan API**: `https://api-testnet.bscscan.com/api` (or mainnet variant)
