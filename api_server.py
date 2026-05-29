@@ -33,6 +33,8 @@ def get_bot() -> BSCTokenSniper:
     global _bot
     if _bot is None:
         _bot = BSCTokenSniper(str(CONFIG_PATH))
+        if not _bot.wallet_private_key:
+            logger.warning("No private key found for bot. API will run in detect-only mode.")
     return _bot
 
 

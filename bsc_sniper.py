@@ -63,10 +63,13 @@ class BSCTokenSniper:
         quote_tokens = self.config.get("quoteTokenAddresses") or [self.config["wbnbAddress"]]
         self.quote_token_addresses = {to_checksum(addr).lower() for addr in quote_tokens}
 
-        self.wallet_private_key = self.config.get("walletPrivateKey", "")
+        import os
+        self.wallet_private_key = self.config.get("walletPrivateKey", "") or os.getenv("WALLET_PRIVATE_KEY", "")
         self.account = None
         if self.wallet_private_key and "YOUR_PRIVATE_KEY" not in self.wallet_private_key:
             self.account = self.w3.eth.account.from_key(self.wallet_private_key)
+        elif not self.wallet_private_key:
+            logger.warning("No private key found in config or environment. Running in detect-only mode.")
 
         self.scanned_pairs = set()
         self.last_scanned_block = self.config.get("startBlock")

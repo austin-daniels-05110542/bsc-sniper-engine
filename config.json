@@ -15,7 +15,7 @@
     "0xae13d989dac2f0debff460ac112a837c89baa7cd",
     "0x395F35620f76cf32302dfe8C3243912E8DfCD1Ff"
   ],
-  "walletPrivateKey": "66b2ca6e5d925cfa6a4cdb84b9d242b8f547e7c02c485f21a5590bdd222ee415",
+  "walletPrivateKey": "",
   "dryRun": true,
   "disableSafetyForTesting": true,
   "enableMiniAudit": true,

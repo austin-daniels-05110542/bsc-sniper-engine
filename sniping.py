@@ -28,7 +28,13 @@ class BSCTokenSniper:
         self.w3.middleware_onion.inject(geth_poa_middleware, layer=0)
         
         # Wallet setup
-        self.account = self.w3.eth.account.from_key(self.config['walletPrivateKey'])
+        import os
+        private_key = self.config.get('walletPrivateKey', '') or os.getenv('WALLET_PRIVATE_KEY', '')
+        if private_key:
+            self.account = self.w3.eth.account.from_key(private_key)
+        else:
+            self.account = None
+            logger.warning("No private key found in config or environment. Running in detect-only mode.")
         
         # Contract addresses (PancakeSwap V2)
         self.ROUTER_ADDRESS = Web3.toChecksumAddress('0xD99D1c33F9fC3444f8101754aBC46c52416550D1')
